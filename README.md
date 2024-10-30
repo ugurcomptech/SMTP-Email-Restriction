@@ -101,10 +101,15 @@ E-posta adresi başarıyla engellendi: ugur@ugurcomptech.net.tr
 
 ## Dikkat Edilmesi Gerekenler
 
-- Engelleme işlemi, belirtilen e-posta adresinden yapılan tüm gönderimleri engelleyecektir.
-- `header_checks` dosyasında yapılacak değişikliklerin geçerli olması için Postfix'in yeniden yüklenmesi gerektiğini unutmayın.
-- Scriptler üzerine belirtilen dosya yolu sizin kullanmış olduğunuz sistemde farklılık gösterebilir.
-- Bu scriptler sadece Postfix üzerinde denenmiş olup farklı SMTP servisleri için herhangi bir test gerçekleştirilmemiş olup çalışma garantisi sunulmmaktadır. 
+- **Engelleme İşlemi**: Engelleme işlemi, belirtilen e-posta adresinden yapılan tüm gönderimleri engelleyecektir. E-posta adresi engellendikten sonra `header_checks` dosyasına kural eklenir ve Postfix yapılandırması yeniden yüklenir.
+- **Postfix Yeniden Yükleme**: `header_checks` dosyasındaki değişikliklerin geçerli olması için `postmap` ve `systemctl reload postfix` komutları çalıştırılmaktadır. Sunucuda kritik işlemler yürütülüyorsa, bu komutların çalışma sıklığı sunucu performansı açısından dikkatle ayarlanmalıdır.
+- **Kullanıcı ve Domain Kontrolü**: Script, yalnızca `/home/vmail` altında tanımlı alan adlarına ait e-posta adresleri için engelleme sağlar. Bu nedenle, sunucuda tanımlı olmayan dış alan adları engellenmeyecektir.
+- **Kök (Root) Kullanıcı İstisnası**: Sunucu işlemlerinde önemli olan `root` kullanıcısından gelen e-postalar, istisna olarak engellenmeyecek şekilde ayarlanmıştır.
+- **Script Çalışma Aralığı**: Bu script, 1 dakikalık aralıklarla cron ile çalıştırılabilir. Bu sayede Postfix logları düzenli olarak izlenir ve limit aşımı durumunda hızlıca müdahale edilir.
+- **Loglama ve Günlük Dosyaları**: Engellenen e-posta adresleri ve diğer durum mesajları, tanımlı `log_file` (`/var/log/email_sends.log`) dosyasına kaydedilir. Bu dosyanın düzenli olarak gözden geçirilmesi veya temizlenmesi önerilir.
+- **Sistem Performansı**: Sürekli log dosyalarını izleme ve güncelleme işlemi yüksek e-posta trafiği olan sunucularda işlemci ve disk kullanımı açısından dikkat gerektirir. Gerektiğinde `tail -n` ile okunan satır sayısı azaltılabilir veya zaman aralığı genişletilebilir.
+- **Uyumluluk**: Bu script yalnızca Postfix üzerinde test edilmiştir. Farklı MTA (Mail Transfer Agent) servisleri için uyumluluk garantisi sunulmamaktadır.
+
 
 
 ## Lisans
