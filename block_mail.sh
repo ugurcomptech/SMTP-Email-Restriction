@@ -16,7 +16,7 @@ access_file="/etc/postfix/access"
 pattern="/^From:.*$email/"
 
 if ! grep -q "$pattern" "$access_file"; then
-    echo "$pattern REJECT Custom error message: Your email is not allowed to be sent from this address." >> "$access_file"
+    echo "$pattern REJECT" >> "$access_file"
     # Postfix'i yeniden yükle
     postmap "$access_file"
     systemctl reload postfix
