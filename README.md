@@ -97,9 +97,16 @@ Bu e-posta adresi engellenmedi (domain mevcut değil): ugur@gmail.com
 E-posta adresi başarıyla engellendi: ugur@ugurcomptech.net.tr
 ```
 
-
-
 ## Dikkat Edilmesi Gerekenler
 
 - Engelleme işlemi, belirtilen e-posta adresinden yapılan tüm gönderimleri engelleyecektir.
 - `header_checks` dosyasında yapılacak değişikliklerin geçerli olması için Postfix'in yeniden yüklenmesi gerektiğini unutmayın.
+- Scriptler üzerine belirtilen dosya yolu sizin kullanmış olduğunuz sistemde farklılık gösterebilir.
+- Bu scriptler sadece Postfix üzerinde denenmiş olup farklı SMTP servisleri için herhangi bir test gerçekleştirilmemiş olup çalışma garantisi sunulmmaktadır. 
+
+
+## Lisans
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+Bu projeyi [MIT Lisansı](https://opensource.org/licenses/MIT) altında lisansladık. Lisansın tam açıklamasını burada bulabilirsiniz.
