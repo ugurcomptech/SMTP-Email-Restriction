@@ -1,7 +1,7 @@
 # SMTP-Email-Restriction
 
 
-Bu dökümanda, Postfix SMTP servisi üzerinden belirli bir e-posta adresinin gönderim hakkını engellemek için kullanılan sistemin kurulumu ve kullanımı açıklanmaktadır.
+Bu dökümanda, Postfix SMTP servisi üzerinden belirli bir e-posta adresinin gönderim hakkını engellemek için kullanılan sistemin kurulumu ve kullanımı açıklanmaktadır. Eğer bu sistemin otomatik olarak çalışmasının istiyor iseniz lütfen belgeyi sonuna kadar okuyunuz.
 
 ## Gereksinimler
 
@@ -74,6 +74,27 @@ Aşağıda engellenmiş olunan bir e-posta hesabı ile kontrol sağlandığında
 
 ```
 Oct 30 22:31:54 localhost postfix/cleanup[10313]: 62F26180665: reject: header From: ugur@ugurcomptech.net.tr from localhost[127.0.0.1]; from=<ugur@ugurcomptech.net.tr> to=<ugur@gmail.com> proto=ESMTP helo=<[193.106.196.59]>: 5.7.1 message content rejected
+```
+
+# Oto-SMTP-Email-Restriction
+
+Bu script üzerinde belirlenen limit kadar kullanıcıların mail gönderme hakkı bulunmaktadır. Eğer kullanıcılar bu llimitleri geçerse gönderim hakkı otomatik olarak engellenir. Dilerseniz buna bir süre belirleyebilirsiniz.
+
+Scriptin otomatik çalışması için crontab'a ekliyoruz.
+
+```
+* * * * * /root/email_monitor.sh
+```
+
+Script her bir dakikada çalışacaktır ve kontrol edecektir. Script root adresleri ve o sunucuda olmayan domainleri engellemeyecektir. Kontrol etmek için `tail -f /var/log/email_sends.log` yazabilirsiniz.
+
+```
+Root e-posta adresi engellenmedi: droowmpd@amigdala.site
+Root e-posta adresi engellenmedi: root
+Root e-posta adresi engellenmedi: root@amigdala.site
+E-posta adresi başarıyla engellendi: ugurcan@ugurcomptech.net.tr
+Bu e-posta adresi engellenmedi (domain mevcut değil): ugur@gmail.com
+E-posta adresi başarıyla engellendi: ugur@ugurcomptech.net.tr
 ```
 
 
