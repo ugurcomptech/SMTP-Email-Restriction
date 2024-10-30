@@ -78,7 +78,10 @@ Oct 30 22:31:54 localhost postfix/cleanup[10313]: 62F26180665: reject: header Fr
 
 # Oto-SMTP-Email-Restriction
 
-Bu script üzerinde belirlenen limit kadar kullanıcıların mail gönderme hakkı bulunmaktadır. Eğer kullanıcılar bu llimitleri geçerse gönderim hakkı otomatik olarak engellenir. Dilerseniz buna bir süre belirleyebilirsiniz.
+Bu script üzerinde belirlenen limit kadar kullanıcıların mail gönderme hakkı bulunmaktadır. Eğer kullanıcılar bu llimitleri geçerse gönderim hakkı otomatik olarak engellenir. Dilerseniz buna bir süre belirleyebilirsiniz. Ek olarak bu scirpt engellediği maile bir bildiri gönderir.
+
+![image](https://github.com/user-attachments/assets/e5bb60a1-ceba-4c3b-830c-1013ddfa08a1)
+
 
 [Buraya](https://github.com/ugurcomptech/SMTP-Email-Restriction/blob/main/email_monitor.sh) tıklayarak repo üzerindeki scripte erişebilirsiniz.
 
