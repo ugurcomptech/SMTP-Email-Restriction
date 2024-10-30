@@ -80,6 +80,8 @@ Oct 30 22:31:54 localhost postfix/cleanup[10313]: 62F26180665: reject: header Fr
 
 Bu script üzerinde belirlenen limit kadar kullanıcıların mail gönderme hakkı bulunmaktadır. Eğer kullanıcılar bu llimitleri geçerse gönderim hakkı otomatik olarak engellenir. Dilerseniz buna bir süre belirleyebilirsiniz.
 
+[Buraya](https://github.com/ugurcomptech/SMTP-Email-Restriction/blob/main/email_monitor.sh) tıklayarak repo üzerindeki scripte erişebilirsiniz.
+
 Scriptin otomatik çalışması için crontab'a ekliyoruz.
 
 ```
