@@ -68,6 +68,7 @@ E-posta adresini engelledikten veya kaldırdıktan sonra Postfix'i yeniden yükl
 systemctl reload postfix
 ```
 
+
 ### 5. Test Edelim
 
 Aşağıda engellenmiş olunan bir e-posta hesabı ile kontrol sağlandığında mesajın gönderilmediğini görüyoruz.
